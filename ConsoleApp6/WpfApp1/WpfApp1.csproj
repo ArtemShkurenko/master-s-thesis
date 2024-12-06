@@ -14,4 +14,10 @@
     <ProjectReference Include="..\Staff.Models\Staff.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="PredictWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

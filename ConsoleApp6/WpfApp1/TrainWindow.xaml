@@ -1,0 +1,12 @@
+﻿<Window x:Class="WpfApp1.TrainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Побудова та тестування моделі" Height="450" Width="800">
+    <Grid>
+        <Button Content="Повернутися" Width="150" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BackToMainWindowButton_Click" Margin="330,384,0,0"/>
+        <Button Name="TrainAndPredictButton" Content="Виконати прогноз" Width="200" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" Click="TrainAndPredictButton_Click"/>
+        <Button Name="SaveToJsonButton" Content="Зберегти у JSON" Width="200" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="220,10,0,0" Click="SaveToJsonButton_Click"/>
+        <TextBox Name="ResultsTextBox" Margin="10,275,10,55" IsReadOnly="True" VerticalScrollBarVisibility="Auto" />
+        <ListBox Name="lstPredictions" HorizontalAlignment="Center" Height="215" VerticalAlignment="Top" Width="780" Margin="0,55,0,0"/>
+    </Grid>
+</Window>

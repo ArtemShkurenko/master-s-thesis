@@ -21,47 +21,21 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly IRepository<StaffData> repository;
-        private readonly StaffPredictionService predictionService;
-        private readonly ReportService<StaffData> staffPredictionReportService;
-
         public MainWindow()
         {
             InitializeComponent();
-            repository = new InMemoryRepository<StaffData>();
-            predictionService = new StaffPredictionService(repository);
-            staffPredictionReportService = new ReportService<StaffData>(new JsonFileRepository<StaffData>());
         }
-        private void TrainAndPredictButton_Click(object sender, RoutedEventArgs e)
+
+        private void TrainModelButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                predictionService.TrainAndPredict();
-                ResultsTextBox.AppendText("Прогноз виконано.\n");
-                var predictions = predictionService.TrainAndPredict();
-                lstPredictions.Items.Clear();
-                foreach (var prediction in predictions)
-                {
-                    lstPredictions.Items.Add($"Predicted StaffLevel: {prediction.PredictedStaffLevel:F2}");
-                }
-            }
-            catch (Exception ex)
-            {
-                ResultsTextBox.AppendText($"Помилка при виконанні: {ex.Message}\n");
-            }
+            var trainWindow = new TrainWindow();
+            trainWindow.Show();
         }
-        private void SaveToJsonButton_Click(object sender, RoutedEventArgs e)
+
+        private void PredictionButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var allPrediction = repository.GetAll();
-                staffPredictionReportService.CreateReport(allPrediction);
-                ResultsTextBox.AppendText($"Результати збережені у JSON.\n");
-            }
-            catch (Exception ex)
-            {
-                ResultsTextBox.AppendText($"Помилка: {ex.Message}\n");
-            }
+            var predictWindow = new PredictWindow();
+            predictWindow.Show();
         }
     }
 }

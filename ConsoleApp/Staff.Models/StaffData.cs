@@ -2,21 +2,23 @@
 
 namespace Staff.Models
 {
-    public class StaffPrediction
+    public class StaffData
     {
         [NoColumn]
-        public Guid Id { get; set; }
-        [ColumnName("Score")]
-        public float PredictedStaffLevel { get; set; }
-        [NoColumn]
+        public int Name { get; set; }
+        [LoadColumn(1)]
         public float Sales { get; set; }
-        [NoColumn]
+
+        [LoadColumn(2)]
         public float Conversion { get; set; }
-        [NoColumn]
+
+        [LoadColumn(3)]
         public float Checks { get; set; }
-        [NoColumn]
+
+        [LoadColumn(4)]
         public float Area { get; set; }
 
+        [LoadColumn(5)]
+        public float StaffLevel { get; set; }
     }
 }
-

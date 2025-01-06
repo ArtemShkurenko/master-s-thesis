@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="OxyPlot.Wpf" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ConsoleApp6\Staff.Core.csproj" />
     <ProjectReference Include="..\Staff.DALL\Staff.DALL.csproj" />
     <ProjectReference Include="..\Staff.Models\Staff.Models.csproj" />

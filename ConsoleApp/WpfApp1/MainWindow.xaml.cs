@@ -16,26 +16,28 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
+        private readonly InMemoryRepository<StaffData> _repository;
         public MainWindow()
         {
             InitializeComponent();
+            _repository = new InMemoryRepository<StaffData>();
         }
 
         private void TrainModelButton_Click(object sender, RoutedEventArgs e)
         {
-            var trainWindow = new TrainWindow();
+            var trainWindow = new TrainWindow(_repository);
             trainWindow.Show();
+           // this.Close();
         }
 
         private void PredictionButton_Click(object sender, RoutedEventArgs e)
         {
-            var predictWindow = new PredictWindow();
+            var predictWindow = new PredictWindow(_repository); 
             predictWindow.Show();
+          //  this.Close();
         }
     }
 }

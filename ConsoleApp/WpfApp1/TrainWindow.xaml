@@ -1,0 +1,56 @@
+﻿<Window x:Class="WpfApp1.TrainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="Побудова та тестування моделі" Height="450" Width="800">
+
+    <Grid>
+        <!-- Определяем строки и столбцы -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Кнопки -->
+            <RowDefinition Height="*" />
+            <!-- PlotView -->
+            <RowDefinition Height="Auto" />
+            <!-- ListBox -->
+            <RowDefinition Height="*" />
+            <!-- DataGrid -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Кнопки -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
+            <Button Content="Повернутися" Width="150" Height="40" Click="BackToMainWindowButton_Click" Margin="5" />
+            <Button Name="TrainAndPredictButton" Content="Навчання метод FastTree" Width="200" Height="40" Click="TrainAndPredictButton_Click" Margin="5" />
+            <Button Content="Навчання метод Fast Forest" Click="TrainPredictAndCompareRandomForestButton_Click" Margin="5" />
+            <Button Name="SaveToJsonButton" Content="Зберегти у JSON" Width="120" Height="40" Click="SaveToJsonButton_Click" Margin="5" />
+        </StackPanel>
+        <TextBox Name="ResultsTextBox" Margin="10" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Grid.Row="2"/>
+        <!-- Графік -->
+        <oxy:PlotView x:Name="PlotView" Grid.Row="1" Margin="10" />
+
+        <!-- ListBox -->
+        <ListBox Name="lstPredictions" Grid.Row="2" HorizontalAlignment="Center" Height="60" Margin="10" />
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="ComparisonDataGrid" 
+                  Grid.Row="3"
+                  AutoGenerateColumns="False"
+                  Margin="10"
+                  Height="200">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="маг." Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="Фактичне значення" Binding="{Binding ActualStaffLevel}" Width="*" />
+                <DataGridTextColumn Header="Прогнозоване значення" Binding="{Binding PredictedStaffLevel}" Width="*" />
+                <DataGridTextColumn Header="Різниця" Binding="{Binding Difference}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
